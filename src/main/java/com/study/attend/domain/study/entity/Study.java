@@ -5,20 +5,23 @@ import lombok.*;
 
 @Entity
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name ="STUDY_TBL")
+@Table(name ="STUDY_TBL",
+       uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
 public class Study {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
+    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private String minAge;
+    private int minAge;
 
+    public Study(String name, int minAge){
+        this.name = name;
+        this.minAge = minAge;
+    }
 
 }

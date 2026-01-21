@@ -7,10 +7,7 @@ import lombok.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name="STUDY_VOTE_TBL",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"study_id", "voter_id", "target_id"})})
-//초대/강퇴 투표
-public class StudyVote {
+public class StudyInvite {
     @Id
     @GeneratedValue
     private Long id;
@@ -19,15 +16,18 @@ public class StudyVote {
     private Study study;
 
     @ManyToOne
-    private Member voter;
+    private Member inviter;
 
     @ManyToOne
-    private Member target;
+    private Member invitee; //초대받은사람
 
-    private StudyVote(Study study, Member voter, Member target) {
+    @Enumerated(EnumType.STRING)
+    private InviteStatus status;
+
+    public StudyInvite(Study study, Member inviter, Member invitee) {
         this.study = study;
-        this.voter = voter;
-        this.target = target;
+        this.inviter = inviter;
+        this.invitee = invitee;
+        this.status = InviteStatus.PENDING;
     }
-
 }
