@@ -13,13 +13,4 @@ public class StudyInviteResponseDto {
     private String inviterName;
     private String status;
 
-    public static StudyInviteResponseDto from(StudyInvite invite) {
-        return new StudyInviteResponseDto(
-                invite.getId(),
-                invite.getStudy().getName(),
-                invite.getInviter().getName(),
-                invite.getStatus().name()
-        );
-    }
-
 }

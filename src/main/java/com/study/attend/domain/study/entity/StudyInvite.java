@@ -7,6 +7,7 @@ import lombok.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name="STUDY_INVITE_TBL")
 public class StudyInvite {
     @Id
     @GeneratedValue
@@ -22,7 +23,7 @@ public class StudyInvite {
     private Member invitee; //초대받은사람
 
     @Enumerated(EnumType.STRING)
-    private InviteStatus status;
+    private InviteStatus status = InviteStatus.PENDING;
 
     public StudyInvite(Study study, Member inviter, Member invitee) {
         this.study = study;

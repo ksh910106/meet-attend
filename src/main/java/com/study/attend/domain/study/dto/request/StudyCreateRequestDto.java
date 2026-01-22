@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StudyCreateRequestDto {
 
-    private Long memberId;
     private String name;
     private int minAge;
 }

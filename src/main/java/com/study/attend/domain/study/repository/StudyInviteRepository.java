@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface StudyInviteRepository extends JpaRepository<StudyInvite, Long> {
-    List<StudyInvite> findByInvitee(Long invitee);
+    List<StudyInvite> findByInviteeId(Long memberId);
 }

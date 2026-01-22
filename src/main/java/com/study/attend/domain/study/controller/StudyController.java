@@ -1,6 +1,5 @@
 package com.study.attend.domain.study.controller;
 
-import com.study.attend.domain.study.dto.reponse.StudyCreateResponseDto;
 import com.study.attend.domain.study.dto.reponse.StudyInviteResponseDto;
 import com.study.attend.domain.study.dto.reponse.StudyResponseDto;
 import com.study.attend.domain.study.dto.request.InviteAcceptRequestDto;
@@ -20,15 +19,14 @@ public class StudyController {
     private final StudyService studyService;
 
     @PostMapping
-    public StudyCreateResponseDto create(@RequestBody StudyCreateRequestDto request){
+    public Long create(@RequestBody StudyCreateRequestDto request){
         return studyService.createStudy(request);
 
     }
 
-    @PostMapping("/{studyId}/invite")
-    public void invite(@PathVariable Long studyId,
-                       @RequestBody StudyInviteRequestDto request) {
-        studyService.inviteMember(studyId, request);
+    @PostMapping("/invite")
+    public void invite(@RequestBody StudyInviteRequestDto request) {
+        studyService.inviteStudy(request);
     }
 
     @PostMapping("/invite/accept")
@@ -41,7 +39,7 @@ public class StudyController {
         return studyService.getStudies();
     }
 
-    @GetMapping("/invites")
+    @GetMapping("/invites/{memberId}")
     public List<StudyInviteResponseDto> myInvites(@RequestParam Long memberId) {
         return studyService.getMyInvites(memberId);
     }

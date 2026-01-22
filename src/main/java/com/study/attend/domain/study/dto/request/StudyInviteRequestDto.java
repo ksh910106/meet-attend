@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StudyInviteRequestDto {
 
+    private Long studyId;
     private Long inviteeId;
     private Long inviterId;
 

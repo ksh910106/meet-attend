@@ -12,11 +12,4 @@ public class StudyResponseDto {
     private String name;
     private int minAge;
 
-    public static StudyResponseDto from(Study study) {
-        return new StudyResponseDto(
-                study.getId(),
-                study.getName(),
-                study.getMinAge()
-        );
-    }
 }

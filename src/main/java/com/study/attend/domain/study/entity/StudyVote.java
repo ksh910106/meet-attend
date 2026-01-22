@@ -21,13 +21,13 @@ public class StudyVote {
     @ManyToOne
     private Member voter;
 
-    @ManyToOne
-    private Member target;
+    @Enumerated(EnumType.STRING)
+    private VoteType voteType;
 
-    private StudyVote(Study study, Member voter, Member target) {
+    private StudyVote(Study study, Member voter, VoteType voteType) {
         this.study = study;
         this.voter = voter;
-        this.target = target;
+        this.voteType = voteType;
     }
 
 }
