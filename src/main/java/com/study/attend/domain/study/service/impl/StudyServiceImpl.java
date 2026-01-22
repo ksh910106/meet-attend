@@ -34,7 +34,7 @@ public class StudyServiceImpl implements StudyService {
     @Override
     public Long createStudy(StudyCreateRequestDto request){
 
-        if(studyRepository.existsByName(request.getName())){
+        if(studyRepository.existsByName(request.getName())){//
             throw new IllegalArgumentException("이미 존재하는 스터디 이름입니다.");
         }
 
